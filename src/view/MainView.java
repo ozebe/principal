@@ -47,8 +47,8 @@ public class MainView extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         usuariosMenu = new javax.swing.JMenuItem();
-        pessoaFisicaCadBtn = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        cadastros = new javax.swing.JMenu();
+        pessoaFisicaCadBtn = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         agendaBtn = new javax.swing.JMenuItem();
 
@@ -69,17 +69,17 @@ public class MainView extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        pessoaFisicaCadBtn.setText("Cadastros");
+        cadastros.setText("Cadastros");
 
-        jMenuItem1.setText("Pessoa Física");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        pessoaFisicaCadBtn.setText("Pessoa Física");
+        pessoaFisicaCadBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                pessoaFisicaCadBtnActionPerformed(evt);
             }
         });
-        pessoaFisicaCadBtn.add(jMenuItem1);
+        cadastros.add(pessoaFisicaCadBtn);
 
-        jMenuBar1.add(pessoaFisicaCadBtn);
+        jMenuBar1.add(cadastros);
 
         jMenu2.setText("Utilidades");
 
@@ -131,7 +131,7 @@ public class MainView extends javax.swing.JFrame {
 
     }//GEN-LAST:event_usuariosMenuActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void pessoaFisicaCadBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pessoaFisicaCadBtnActionPerformed
         try {
             final PessoaCadastraView pessoaFisicaCad;
 
@@ -148,7 +148,7 @@ public class MainView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Não foi possível encontrar a seguinte biblioteca\n" + ex, "Erro", JOptionPane.ERROR_MESSAGE);
         }
 
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_pessoaFisicaCadBtnActionPerformed
 
     private void agendaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agendaBtnActionPerformed
         final AgendaView agenda;
@@ -206,11 +206,11 @@ public class MainView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem agendaBtn;
+    private javax.swing.JMenu cadastros;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenu pessoaFisicaCadBtn;
+    private javax.swing.JMenuItem pessoaFisicaCadBtn;
     private javax.swing.JLabel userLogadoLabel;
     private javax.swing.JMenuItem usuariosMenu;
     // End of variables declaration//GEN-END:variables
