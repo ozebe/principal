@@ -17,7 +17,14 @@ import javax.swing.JOptionPane;
  * @author wesley.santos
  */
 public class MainView extends javax.swing.JFrame {
+
     private Usuario userLogado;
+
+    private final String CHAVE_PRINCIPAL = "db-config";
+    private final String CHAVE_LOCAL_BASE = "local";
+    private final String CHAVE_USUARIO = "user";
+    private final String CHAVE_SENHA = "password";
+
     /**
      * Creates new form MainView
      */
@@ -109,33 +116,52 @@ public class MainView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void usuariosMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuariosMenuActionPerformed
-        final UsuariosView usuarios;
+
         try {
             //criar usuário logado, passar como atributo e verificar para utilização.
-            usuarios = new UsuariosView("db-config", "local", "user", "password");
+            final UsuariosView usuarios;
+            usuarios = new UsuariosView(CHAVE_PRINCIPAL, CHAVE_LOCAL_BASE, CHAVE_USUARIO, CHAVE_SENHA);
+            usuarios.setLocationRelativeTo(null);
             usuarios.setVisible(true);
         } catch (ClassNotFoundException | SQLException | IOException ex) {
             Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NoClassDefFoundError ex) {
-            JOptionPane.showMessageDialog(null, "Não foi possível encontrar a seguinte biblioteca\n"+ex, "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Não foi possível encontrar a seguinte biblioteca\n" + ex, "Erro", JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_usuariosMenuActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
+        try {
+            final PessoaCadastraView pessoaFisicaCad;
+
+            pessoaFisicaCad = new PessoaCadastraView(CHAVE_PRINCIPAL, CHAVE_LOCAL_BASE, CHAVE_USUARIO, CHAVE_SENHA);
+
+            pessoaFisicaCad.setLocationRelativeTo(null);
+            pessoaFisicaCad.setVisible(true);
+        } catch (ClassNotFoundException | SQLException | IOException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao carregar\n" + ex, "Erro", JOptionPane.ERROR_MESSAGE);
+            Logger
+                    .getLogger(MainView.class
+                            .getName()).log(Level.SEVERE, null, ex);
+        } catch (NoClassDefFoundError ex) {
+            JOptionPane.showMessageDialog(null, "Não foi possível encontrar a seguinte biblioteca\n" + ex, "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void agendaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agendaBtnActionPerformed
-              final AgendaView agenda;
+        final AgendaView agenda;
         try {
             //criar usuário logado, passar como atributo e verificar para utilização.
-            agenda = new AgendaView("db-config", "local", "user", "password", this.userLogado);
+            agenda = new AgendaView(CHAVE_PRINCIPAL, CHAVE_LOCAL_BASE, CHAVE_USUARIO, CHAVE_SENHA, this.userLogado);
             agenda.setVisible(true);
+
         } catch (ClassNotFoundException | SQLException | IOException ex) {
-            Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MainView.class
+                    .getName()).log(Level.SEVERE, null, ex);
         } catch (NoClassDefFoundError ex) {
-            JOptionPane.showMessageDialog(null, "Não foi possível encontrar a seguinte biblioteca\n"+ex, "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Não foi possível encontrar a seguinte biblioteca\n" + ex, "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_agendaBtnActionPerformed
 
@@ -169,7 +195,6 @@ public class MainView extends javax.swing.JFrame {
 //            }
 //        });
 //    }
-
     public void setUserLogado(Usuario userLogado) {
         this.userLogado = userLogado;
     }
@@ -177,7 +202,7 @@ public class MainView extends javax.swing.JFrame {
     public Usuario getUserLogado() {
         return userLogado;
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem agendaBtn;
