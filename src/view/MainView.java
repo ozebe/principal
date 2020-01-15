@@ -49,6 +49,8 @@ public class MainView extends javax.swing.JFrame {
         usuariosMenu = new javax.swing.JMenuItem();
         cadastros = new javax.swing.JMenu();
         pessoaFisicaCadBtn = new javax.swing.JMenuItem();
+        visualizar = new javax.swing.JMenu();
+        pessoaFisicaVisualizarBtn = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         agendaBtn = new javax.swing.JMenuItem();
 
@@ -80,6 +82,18 @@ public class MainView extends javax.swing.JFrame {
         cadastros.add(pessoaFisicaCadBtn);
 
         jMenuBar1.add(cadastros);
+
+        visualizar.setText("Consultas");
+
+        pessoaFisicaVisualizarBtn.setText("Pessoas Físicas");
+        pessoaFisicaVisualizarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pessoaFisicaVisualizarBtnActionPerformed(evt);
+            }
+        });
+        visualizar.add(pessoaFisicaVisualizarBtn);
+
+        jMenuBar1.add(visualizar);
 
         jMenu2.setText("Utilidades");
 
@@ -165,6 +179,19 @@ public class MainView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_agendaBtnActionPerformed
 
+    private void pessoaFisicaVisualizarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pessoaFisicaVisualizarBtnActionPerformed
+        final PessoasView viewPessoas;
+        try {
+            viewPessoas = new PessoasView(CHAVE_PRINCIPAL, CHAVE_LOCAL_BASE, CHAVE_USUARIO, CHAVE_SENHA);
+            viewPessoas.setVisible(true);
+        } catch (ClassNotFoundException | SQLException | IOException ex) {
+            JOptionPane.showMessageDialog(null, "Não foi possível encontrar a seguinte biblioteca\n" + ex, "Erro", JOptionPane.ERROR_MESSAGE);
+
+            Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_pessoaFisicaVisualizarBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -211,7 +238,9 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem pessoaFisicaCadBtn;
+    private javax.swing.JMenuItem pessoaFisicaVisualizarBtn;
     private javax.swing.JLabel userLogadoLabel;
     private javax.swing.JMenuItem usuariosMenu;
+    private javax.swing.JMenu visualizar;
     // End of variables declaration//GEN-END:variables
 }
