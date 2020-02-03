@@ -44,6 +44,7 @@ public class MainView extends javax.swing.JFrame {
     private void initComponents() {
 
         userLogadoLabel = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         usuariosMenu = new javax.swing.JMenuItem();
@@ -57,6 +58,8 @@ public class MainView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         userLogadoLabel.setText("jLabel1");
+
+        jLabel1.setText("Usuário:");
 
         jMenu1.setText("Controle de acesso");
 
@@ -115,14 +118,18 @@ public class MainView extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(userLogadoLabel)
-                .addContainerGap(343, Short.MAX_VALUE))
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(userLogadoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(181, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(258, Short.MAX_VALUE)
-                .addComponent(userLogadoLabel)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(userLogadoLabel)
+                    .addComponent(jLabel1))
                 .addContainerGap())
         );
 
@@ -182,7 +189,7 @@ public class MainView extends javax.swing.JFrame {
     private void pessoaFisicaVisualizarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pessoaFisicaVisualizarBtnActionPerformed
         final PessoasView viewPessoas;
         try {
-            viewPessoas = new PessoasView(CHAVE_PRINCIPAL, CHAVE_LOCAL_BASE, CHAVE_USUARIO, CHAVE_SENHA);
+            viewPessoas = new PessoasView(CHAVE_PRINCIPAL, CHAVE_LOCAL_BASE, CHAVE_USUARIO, CHAVE_SENHA, this.userLogado);
             viewPessoas.setVisible(true);
         } catch (ClassNotFoundException | SQLException | IOException ex) {
             JOptionPane.showMessageDialog(null, "Não foi possível encontrar a seguinte biblioteca\n" + ex, "Erro", JOptionPane.ERROR_MESSAGE);
@@ -234,6 +241,7 @@ public class MainView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem agendaBtn;
     private javax.swing.JMenu cadastros;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
